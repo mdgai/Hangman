@@ -11,7 +11,7 @@ import com.hangman.jdbc.to.Demo;
 public class Main {
 
 	public static void main(String[] args) throws ClassNotFoundException,
-			SQLException {
+	SQLException {
 		System.out.println("Hello from main!!!");
 		/*
 		 * DemoDAO demoDAO = new DemoDAO(); DemoTO insertObject = new DemoTO();
@@ -27,7 +27,7 @@ public class Main {
 		 * System.out.println(demoTO.toString()); }
 		 */
 
-		DemoDAO demoDAO = new DemoDAO();
+		/*DemoDAO demoDAO = new DemoDAO();
 		Demo insertObject = new Demo();
 
 		insertObject.setFirstName("First name");
@@ -39,17 +39,17 @@ public class Main {
 
 		for (Demo demoTO : demoList) {
 			System.out.println(demoTO.toString());
-		}
+		}*/
 
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						new LoginGUI();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					new LoginGUI();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			});
-		
+			}
+		});
+
 	}
 }
