@@ -1,8 +1,10 @@
 package com.hangman.main;
 
+import java.awt.EventQueue;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.hangman.GUI.LoginGUI;
 import com.hangman.jdbc.dao.DemoDAO;
 import com.hangman.jdbc.to.Demo;
 
@@ -38,5 +40,16 @@ public class Main {
 		for (Demo demoTO : demoList) {
 			System.out.println(demoTO.toString());
 		}
+
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						new LoginGUI();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		
 	}
 }
