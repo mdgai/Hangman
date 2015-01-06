@@ -19,7 +19,6 @@ public class DemoDAO implements BaseDAO<Demo> {
 	private PreparedStatement prepStatement;
 	private ResultSet resultSet;
 
-	@Override
 	public void add(Demo transferObject) {
 		int rowsAffected = 0;
 		try {
@@ -48,7 +47,6 @@ public class DemoDAO implements BaseDAO<Demo> {
 
 	}
 
-	@Override
 	public void delete(int id) {
 		int rowsAffected = 0;
 
@@ -77,12 +75,10 @@ public class DemoDAO implements BaseDAO<Demo> {
 
 	}
 
-	@Override
 	public void delete(Demo transferObject) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void update(Demo transferObject) {
 		int rowsAffected = 0;
 
@@ -114,7 +110,6 @@ public class DemoDAO implements BaseDAO<Demo> {
 
 	}
 
-	@Override
 	public List<Demo> findAll() {
 		List<Demo> list = new ArrayList<Demo>();
 
@@ -148,7 +143,6 @@ public class DemoDAO implements BaseDAO<Demo> {
 		return list;
 	}
 
-	@Override
 	public void rowAffect(int rows) {
 		if (rows == 0) {
 			System.out

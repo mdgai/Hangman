@@ -68,13 +68,13 @@ public class LoginGUI {
 		panel.add(lblPassword);
 
 		// creates textFields
-		JTextField userField = new JTextField();
+		final JTextField userField = new JTextField();
 		userField.setText("user");
 		userField.setBounds(195, 181, 108, 20);
 		panel.add(userField);
 		userField.setColumns(10);
 
-		JPasswordField passwordField = new JPasswordField();
+		final JPasswordField passwordField = new JPasswordField();
 		passwordField.setText("****");
 		passwordField.setBounds(195, 221, 108, 20);
 		panel.add(passwordField);
