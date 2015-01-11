@@ -3,7 +3,6 @@ package com.hangman.GUI;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,12 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.hangman.jdbc.dao.DemoDAO;
-import com.hangman.jdbc.to.Demo;
+import com.hangman.jdbc.service.UserService;
 
 public class LoginGUI {
 
 	private String username, password;
+	private JFrame frame;
 
 	/**
 	 * Create the application GUI
@@ -36,7 +35,7 @@ public class LoginGUI {
 	private void initialize() {
 
 		// creates a new JFrame
-		JFrame frmHandman = new JFrame();
+		final JFrame frmHandman = new JFrame();
 		frmHandman.setVisible(true);
 		frmHandman.setTitle("HangMan");
 		frmHandman.setBounds(100, 100, 450, 350);
@@ -75,7 +74,7 @@ public class LoginGUI {
 		userField.setColumns(10);
 
 		final JPasswordField passwordField = new JPasswordField();
-		passwordField.setText("****");
+		passwordField.setText("guest");
 		passwordField.setBounds(195, 221, 108, 20);
 		panel.add(passwordField);
 		passwordField.setColumns(10);
@@ -88,18 +87,32 @@ public class LoginGUI {
 				username = userField.getText();
 				password = String.valueOf(passwordField.getPassword());
 
-				DemoDAO demoDAO = new DemoDAO();
-				Demo insertObject = new Demo();
+				try {
 
-				insertObject.setFirstName(username);
-				insertObject.setLastName(password);
+					// Checks if user is authenticated or admin and opens next
+					// GUI
+					if (new UserService().isAuthenticatedUser(username,
+							password)) {
+						if (new UserService().isAdmin(username, password)) {
+							// Open AdminGUI
+							frame = new AdminGUI();
+							frame.setVisible(true);
+						} else {
+							// Open next GUI
+							frame = new MainGUI(username + " plays Hangman");
+							frame.setVisible(true);
+						}
+						frmHandman.dispose();
+					} else {
+						String message = "Invalid username or password. "
+								+ "Please try again.";
 
-				demoDAO.add(insertObject);
+						
+						DialogHelper.showError(frmHandman, message, "Hangman");
 
-				List<Demo> demoList = demoDAO.findAll();
-
-				for (Demo demoTO : demoList) {
-					System.out.println(demoTO.toString());
+					}
+				} catch (Exception e) {
+					DialogHelper.showException(frmHandman, e, "Exception");
 				}
 			}
 		});

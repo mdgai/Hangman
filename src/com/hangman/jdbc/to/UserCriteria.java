@@ -1,25 +1,25 @@
 package com.hangman.jdbc.to;
 
 /**
- * Transfer Object User encapsulates business logic.
+ * UserCriteria object serves as an argument to database related methods.
  * 
  * @author Maria - Despoina Gkaintatzi
  *
  */
-public class User {
+public class UserCriteria {
 
-	private int id;
+	private Integer id;
 	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
-	private boolean isAdmin;
+	private Integer isAdmin;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -55,19 +55,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public boolean isAdmin() {
+	public Integer getAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(Integer isAdmin) {
 		this.isAdmin = isAdmin;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", isAdmin=" + isAdmin + "]";
 	}
 
 }

@@ -22,15 +22,6 @@ public interface BaseDAO<T> {
 	/**
 	 * Method for deleting a transferObject record from the database.
 	 * 
-	 * @param id
-	 *            transferObject to be deleted, specified by id.
-	 * @author Maria - Despoina Gkaintatzi
-	 */
-	public void delete(int id);
-
-	/**
-	 * Method for deleting a transferObject record from the database.
-	 * 
 	 * @param transferObject
 	 *            transferObject to be deleted.
 	 * @author Maria - Despoina Gkaintatzi
@@ -47,12 +38,13 @@ public interface BaseDAO<T> {
 	public void update(T transferObject);
 
 	/**
-	 * Method for finding all records of table.
+	 * * Method for finding all records of table.
 	 * 
-	 * @return a List of objects.
+	 * @param criteriaObject
+	 * @return
 	 * @author Maria - Despoina Gkaintatzi
 	 */
-	public List<T> findAll();
+	public <E> List<T> findAll(E criteriaObject);
 
 	/**
 	 * Method for telling the user if the request has been completed
@@ -62,4 +54,5 @@ public interface BaseDAO<T> {
 	 * @author Maria - Despoina Gkaintatzi
 	 */
 	public void rowAffect(int rows);
+
 }
