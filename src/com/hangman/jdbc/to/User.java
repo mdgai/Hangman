@@ -11,9 +11,6 @@ public class User {
 	private int id;
 	private String username;
 	private String password;
-	private String firstName;
-	private String lastName;
-	private boolean isAdmin;
 
 	public int getId() {
 		return id;
@@ -39,35 +36,10 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public boolean isAdmin() {
-		return isAdmin;
-	}
-
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", isAdmin=" + isAdmin + "]";
+				+ password + "]";
 	}
 
 }
