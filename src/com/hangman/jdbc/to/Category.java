@@ -1,5 +1,11 @@
 package com.hangman.jdbc.to;
 
+/**
+ * Transfer Object Category
+ * 
+ * @author Alexandra Tzanidou
+ * 
+ */
 public class Category {
 
 	private String CategoryName;
