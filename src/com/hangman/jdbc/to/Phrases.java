@@ -2,13 +2,11 @@ package com.hangman.jdbc.to;
 
 /**
  * Transfer Object Phrases
+ * 
  * @author Tzanidou Alexandra
- *
- */
-/**
- * @author Maria - Despoina Gkaintatzi
  * 
  */
+
 public class Phrases {
 
 	private int PhraseID;

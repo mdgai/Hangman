@@ -29,7 +29,7 @@ public class LoginGUI {
 
 	/**
 	 * Initialize the contents of the frame.
-	 *
+	 * 
 	 * @author Margarita Tryfou
 	 */
 	private void initialize() {
@@ -99,7 +99,8 @@ public class LoginGUI {
 							frame.setVisible(true);
 						} else {
 							// Open next GUI
-							frame = new MainGUI(username + " plays Hangman");
+							frame = new CategoriesGUI(
+									"Please Select a Category");
 							frame.setVisible(true);
 						}
 						frmHandman.dispose();
@@ -107,7 +108,6 @@ public class LoginGUI {
 						String message = "Invalid username or password. "
 								+ "Please try again.";
 
-						
 						DialogHelper.showError(frmHandman, message, "Hangman");
 
 					}

@@ -9,8 +9,8 @@ package com.hangman.jdbc.to;
  */
 public class PhrasesCriteria {
 
-	private int PhraseID;
-	private int PhraseCategoryID;
+	private Integer PhraseID;
+	private Integer PhraseCategoryID;
 	private String PhraseName;
 	private String PhraseHelp;
 
@@ -18,15 +18,16 @@ public class PhrasesCriteria {
 		return PhraseID;
 	}
 
-	public void setPhraseID(int phraseID) {
+	public void setPhraseID(Integer phraseID) {
 		PhraseID = phraseID;
 	}
 
 	public int getPhraseCategoryID() {
+
 		return PhraseCategoryID;
 	}
 
-	public void setPhraseCategoryID(int phraseCategoryID) {
+	public void setPhraseCategoryID(Integer phraseCategoryID) {
 		PhraseCategoryID = phraseCategoryID;
 	}
 
@@ -44,5 +45,17 @@ public class PhrasesCriteria {
 
 	public void setPhraseHelp(String phraseHelp) {
 		PhraseHelp = phraseHelp;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PhrasesCriteria [PhraseID=" + PhraseID + ", PhraseCategoryID="
+				+ PhraseCategoryID + ", PhraseName=" + PhraseName
+				+ ", PhraseHelp=" + PhraseHelp + "]";
 	}
 }

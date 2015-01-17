@@ -64,7 +64,7 @@ public class PhrasesDAO implements BaseDAO<Phrases> {
 	}
 
 	/**
-	 ** Deletes a Phrases object from table Phrases.
+	 * Deletes a Phrases object from table Phrases.
 	 * 
 	 * @param transferObject
 	 * @author Tzanidou Alexandra

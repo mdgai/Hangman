@@ -6,7 +6,7 @@ import java.util.List;
  * Base Interface for releted operations with the Database.
  * 
  * @author Maria - Despoina Gkaintatzi
- *
+ * 
  * @param <T>
  */
 public interface BaseDAO<T> {

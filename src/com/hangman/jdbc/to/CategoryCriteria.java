@@ -10,7 +10,7 @@ package com.hangman.jdbc.to;
 public class CategoryCriteria {
 
 	private String CategoryName;
-	private int CategoryID;
+	private Integer CategoryID;
 
 	public String getCategoryName() {
 		return CategoryName;
@@ -20,7 +20,7 @@ public class CategoryCriteria {
 		this.CategoryName = CategoryName;
 	}
 
-	public int getCategoryID() {
+	public Integer getCategoryID() {
 		return CategoryID;
 	}
 
