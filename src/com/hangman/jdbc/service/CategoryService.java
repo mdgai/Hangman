@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-import com.google.common.collect.Lists;
 import com.hangman.jdbc.dao.BaseDAO;
 import com.hangman.jdbc.dao.CategoryDAO;
 import com.hangman.jdbc.to.Category;

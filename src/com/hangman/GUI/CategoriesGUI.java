@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.hangman.guiMainFrame.HangmanMainFrame;
 import com.hangman.jdbc.service.CategoryService;
 import com.hangman.jdbc.service.PhrasesService;
 import com.hangman.jdbc.to.CategoryCriteria;
@@ -132,7 +133,8 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 					String PhraseCategoryId = partsOfrandom[1];
 					String PhraseHelp = partsOfrandom[2];
 					String PhraseName = partsOfrandom[3];
-					char[] WordForMainGui = PhraseName.toCharArray();
+					// char[] WordForMainGui = PhraseName.toCharArray();
+					new HangmanMainFrame(PhraseName);
 
 					// System.out.println(contents);
 					System.out.println(PhraseId);
