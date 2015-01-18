@@ -14,7 +14,12 @@ public class PhrasesCriteria {
 	private String PhraseName;
 	private String PhraseHelp;
 
-	public int getPhraseID() {
+	public String toString() {
+		return PhraseID + "." + PhraseCategoryID + "." + PhraseName + "."
+				+ PhraseHelp;
+	}
+
+	public Integer getPhraseID() {
 		return PhraseID;
 	}
 
@@ -22,7 +27,7 @@ public class PhrasesCriteria {
 		PhraseID = phraseID;
 	}
 
-	public int getPhraseCategoryID() {
+	public Integer getPhraseCategoryID() {
 
 		return PhraseCategoryID;
 	}
@@ -47,15 +52,4 @@ public class PhrasesCriteria {
 		PhraseHelp = phraseHelp;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PhrasesCriteria [PhraseID=" + PhraseID + ", PhraseCategoryID="
-				+ PhraseCategoryID + ", PhraseName=" + PhraseName
-				+ ", PhraseHelp=" + PhraseHelp + "]";
-	}
 }

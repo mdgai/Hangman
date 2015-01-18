@@ -10,7 +10,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return CategoryID + "." + CategoryName;
+		return CategoryID + " " + CategoryName;
 	}
 
 	private String CategoryName;

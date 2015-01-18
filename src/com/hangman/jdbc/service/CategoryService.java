@@ -40,40 +40,6 @@ public class CategoryService {
 
 	}
 
-	/*
-	 * public void getAll(List<Category> Category) { findAll(null); }
-	 * 
-	 * public static void fillListWithCategories() { try { CategoryService
-	 * categoryservice = new CategoryService(); CategoryCriteria
-	 * categorycriteria = new CategoryCriteria(); List<Category> categories =
-	 * new ArrayList<Category>(); List<String> query1 = new ArrayList<String>();
-	 * categories = categoryservice.findAll(categorycriteria); for (Category
-	 * currentCategory : categories) ; query1.add(categories.toString());
-	 * 
-	 * } catch (Exception e) { JOptionPane.showMessageDialog(null,
-	 * "Sorry,Something went wrong!" + e); }
-	 * 
-	 * }
-	 * 
-	 * public static JComboBox<Object> getListWithCategories() { List<String>
-	 * query1 = new ArrayList<String>(); List<List<String>> smallerLists =
-	 * Lists.partition(query1, 2); JComboBox<Object> CategoriesCombo = new
-	 * JComboBox<Object>(); try { CategoryService categoryservice = new
-	 * CategoryService(); CategoryCriteria categorycriteria = new
-	 * CategoryCriteria(); List<Category> categories = new
-	 * ArrayList<Category>(); categories =
-	 * categoryservice.findAll(categorycriteria);
-	 * 
-	 * // /for (Category currentCategory : categories);
-	 * 
-	 * // query1.add(categories.toString()); for (List<Category> partition :
-	 * Lists.partition(categories, 1)) { CategoriesCombo.addItem(partition); } }
-	 * catch (Exception e) { JOptionPane.showMessageDialog(null,
-	 * "Sorry,Something went wrong!" + e); } return CategoriesCombo;
-	 * 
-	 * }
-	 */
-
 	public static DefaultComboBoxModel<List<?>> buildComboBoxModel()
 			throws Exception {
 		DefaultComboBoxModel<List<?>> comboBoxModel = new DefaultComboBoxModel<List<?>>();
@@ -91,5 +57,19 @@ public class CategoryService {
 					+ e);
 		}
 		return comboBoxModel;
+	}
+
+	public String CategorySelection(String isSelected) {
+
+		CategoryCriteria Category = new CategoryCriteria();
+		Category.setCategoryName(isSelected);
+		return isSelected;
+	}
+
+	public Integer CategoryId(int SelectionsId) {
+
+		CategoryCriteria Category = new CategoryCriteria();
+		Category.setCategoryID(SelectionsId);
+		return SelectionsId;
 	}
 }

@@ -16,7 +16,7 @@ public class CategoryCriteria {
 		return CategoryName;
 	}
 
-	public void setUsername(String CategoryName) {
+	public void setCategoryName(String CategoryName) {
 		this.CategoryName = CategoryName;
 	}
 
@@ -26,6 +26,11 @@ public class CategoryCriteria {
 
 	public void setCategoryID(int id) {
 		this.CategoryID = id;
+	}
+
+	@Override
+	public String toString() {
+		return CategoryID + "." + CategoryName;
 	}
 
 }

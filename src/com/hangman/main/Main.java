@@ -15,16 +15,15 @@ public class Main {
 	public static void main(String[] args) throws ClassNotFoundException,
 			SQLException {
 
-		CategoryService categoryservice = new CategoryService();
-		CategoryCriteria categorycriteria = new CategoryCriteria();
-		Category category = new Category();
+		CategoryService Categoryservice = new CategoryService();
+		CategoryCriteria Categorycriteria = new CategoryCriteria();
+		Category Category = new Category();
 		List<Category> categories = new ArrayList<Category>();
-		List<String> query1 = new ArrayList<String>();
-		categories = categoryservice.findAll(categorycriteria);
+		categories = Categoryservice.findAll(Categorycriteria);
 		for (Category currentCategory : categories)
 			;
-		query1.add(categories.toString());
-		System.out.println(query1);
+
+		System.out.println(categories.toString());
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

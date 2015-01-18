@@ -46,4 +46,10 @@ public class Phrases {
 		PhraseHelp = phraseHelp;
 	}
 
+	@Override
+	public String toString() {
+		return PhraseID + "." + PhraseCategoryID + "." + PhraseName + "."
+				+ PhraseHelp;
+	}
+
 }

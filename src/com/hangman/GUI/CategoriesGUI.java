@@ -3,6 +3,8 @@ package com.hangman.GUI;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.hangman.jdbc.service.CategoryService;
+import com.hangman.jdbc.service.PhrasesService;
+import com.hangman.jdbc.to.CategoryCriteria;
+import com.hangman.jdbc.to.Phrases;
+import com.hangman.jdbc.to.PhrasesCriteria;
 
 /**
  * Initialize the contents of the frame.
@@ -21,7 +27,10 @@ import com.hangman.jdbc.service.CategoryService;
 
 public class CategoriesGUI extends JFrame implements ActionListener {
 
-	private JPanel contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Object SelectedCategory;
 
 	/**
@@ -74,20 +83,6 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		CategoriesCombo.setBackground(getForeground());
 		panel.add(CategoriesCombo);
 
-		/*
-		 * panel.add(new JList(), BorderLayout.CENTER); JList<CategoryService>
-		 * CategoryList = new JList<CategoryService>();
-		 * CategoryList.setVisible(true);
-		 * CategoryList.add(CategoryService.this.getListWithCategories(), null);
-		 * CategoryList.getSelectionModel();
-		 * CategoryList.setBounds(getMaximizedBounds());
-		 * CategoryService.fillListWithCategories(); // creates JComboBox //
-		 * JComboBox<Object> CategiesCombo = new JComboBox<Object>().; //
-		 * CategoriesCombo.addItem(CategoriesCombo); //
-		 * CategoriesCombo.setBounds(140, 155, 200, 40); //
-		 * CategoriesCombo.setVisible(true); // panel;
-		 */
-
 		// Creates the selection button
 		JButton btnDone = new JButton("Done!");
 		btnDone.setBounds(180, 230, 89, 23);
@@ -95,8 +90,62 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		panel.add(btnDone);
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Object contents = CategoriesCombo.getSelectedIndex();
-				System.out.println(contents);
+
+				CategoryCriteria fselection = new CategoryCriteria();
+				PhrasesCriteria inportphrases = new PhrasesCriteria();
+				try {
+					/**
+					 * Reads the selected category, and split the string in two
+					 * different.
+					 */
+					Object contents = CategoriesCombo.getSelectedItem()
+							.toString();
+
+					String[] parts = ((String) contents).replaceAll("\\[", "")
+							.replaceAll("\\]", "").split(" ");
+					String id = parts[0];
+					int idtoint = Integer.parseInt(id);
+					String Name = parts[1];
+					String selectionDone = new CategoryService()
+							.CategorySelection(Name);
+					Integer SelcategoryID = new CategoryService()
+							.CategoryId(idtoint);
+
+					PhrasesService phrasesService = new PhrasesService();
+					List<Phrases> list = phrasesService.thisPhrases(idtoint);
+
+					Random random = new Random(); // Create random class object
+					/*
+					 * Generate a random number (index) with the size of the
+					 * list being the maximum
+					 */
+					int randomSelection = random.nextInt(list.size());
+					/*
+					 * Object with the random selection
+					 */
+					Object randomSelectionrow = list.get(randomSelection)
+							.toString();
+					String[] partsOfrandom = ((String) randomSelectionrow)
+							.replaceAll("\\[", "").replaceAll("\\]", "")
+							.split("\\.");
+					String PhraseId = partsOfrandom[0];
+					String PhraseCategoryId = partsOfrandom[1];
+					String PhraseHelp = partsOfrandom[2];
+					String PhraseName = partsOfrandom[3];
+					char[] WordForMainGui = PhraseName.toCharArray();
+
+					// System.out.println(contents);
+					System.out.println(PhraseId);
+					System.out.println(PhraseCategoryId);
+					System.out.println(PhraseHelp);
+					System.out.println(PhraseName);
+					System.out.println(randomSelectionrow);
+
+				} catch (Exception ex) {
+					DialogHelper.showException(frmHangmanCategory, ex,
+							"Something went wrong, Please try again!");
+				}
+
 			}
 		});
 	}
@@ -107,7 +156,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 	 * @author Alexandra Tzanidou
 	 */
 	public Object getCategory() {
-		return "[" + this.SelectedCategory.toString() + "]";
+		return SelectedCategory;
 	}
 
 	public void setCategory(Object Category) {
@@ -121,8 +170,8 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 	 * @author Alexandra Tzanidou
 	 */
 	public void actionPerformed(ActionEvent e) {
-		JComboBox CategoriesCombo = (JComboBox) e.getSource();
-		String SelectedCategory = (String) CategoriesCombo.getSelectedItem();
+		JComboBox<?> CategoriesCombo = (JComboBox<?>) e.getSource();
+		SelectedCategory = CategoriesCombo.getSelectedItem();
 
 	}
 

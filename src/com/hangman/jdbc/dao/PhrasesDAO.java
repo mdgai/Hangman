@@ -168,7 +168,7 @@ public class PhrasesDAO implements BaseDAO<Phrases> {
 			prepStatement.setString(2,
 					((com.hangman.jdbc.to.PhrasesCriteria) PhrasesCriteria)
 							.getPhraseName());
-			prepStatement.setInt(3,
+			prepStatement.setObject(3,
 					((com.hangman.jdbc.to.PhrasesCriteria) PhrasesCriteria)
 							.getPhraseCategoryID());
 			prepStatement.setString(4,
