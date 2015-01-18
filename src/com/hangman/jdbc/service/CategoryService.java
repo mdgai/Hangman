@@ -3,10 +3,10 @@ package com.hangman.jdbc.service;
 import java.util.ArrayList;
 import java.util.List;
 
+//import com.google.common.collect.Lists;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-import com.google.common.collect.Lists;
 import com.hangman.jdbc.dao.BaseDAO;
 import com.hangman.jdbc.dao.CategoryDAO;
 import com.hangman.jdbc.to.Category;
@@ -40,24 +40,20 @@ public class CategoryService {
 
 	}
 
-	public static DefaultComboBoxModel<List<?>> buildComboBoxModel()
-			throws Exception {
-		DefaultComboBoxModel<List<?>> comboBoxModel = new DefaultComboBoxModel<List<?>>();
-		try {
-			CategoryService categoryservice = new CategoryService();
-			CategoryCriteria categorycriteria = new CategoryCriteria();
-			List<Category> categories = new ArrayList<Category>();
-			categories = categoryservice.findAll(categorycriteria);
-
-			for (List<Category> partition : Lists.partition(categories, 1)) {
-				comboBoxModel.addElement(partition);
-			}
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Sorry,Something went wrong!"
-					+ e);
-		}
-		return comboBoxModel;
-	}
+	/*
+	 * public static DefaultComboBoxModel<List<?>> buildComboBoxModel() throws
+	 * Exception { DefaultComboBoxModel<List<?>> comboBoxModel = new
+	 * DefaultComboBoxModel<List<?>>(); try { CategoryService categoryservice =
+	 * new CategoryService(); CategoryCriteria categorycriteria = new
+	 * CategoryCriteria(); List<Category> categories = new
+	 * ArrayList<Category>(); categories =
+	 * categoryservice.findAll(categorycriteria);
+	 * 
+	 * for (List<Category> partition : Lists.partition(categories, 1)) {
+	 * comboBoxModel.addElement(partition); } } catch (Exception e) {
+	 * JOptionPane.showMessageDialog(null, "Sorry,Something went wrong!" + e); }
+	 * return comboBoxModel; }
+	 */
 
 	public String CategorySelection(String isSelected) {
 

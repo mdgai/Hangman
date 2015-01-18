@@ -13,8 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.hangman.guiMainFrame.HangmanMainFrame;
 import com.hangman.jdbc.service.CategoryService;
 import com.hangman.jdbc.service.PhrasesService;
+import com.hangman.jdbc.to.Category;
 import com.hangman.jdbc.to.CategoryCriteria;
 import com.hangman.jdbc.to.Phrases;
 import com.hangman.jdbc.to.PhrasesCriteria;
@@ -74,8 +76,11 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		panel.add(ImageLabel);
 
 		// Creates the combobox with database's categories
-		final JComboBox CategoriesCombo = new JComboBox();
-		CategoriesCombo.setModel(CategoryService.buildComboBoxModel());
+		List<Category> categoryList = new CategoryService()
+				.findAll(new CategoryCriteria());
+		final JComboBox CategoriesCombo = new JComboBox(
+				(Category[]) categoryList.toArray(new Category[categoryList
+						.size()]));
 		CategoriesCombo.setVisible(true);
 		CategoriesCombo.setBounds(140, 155, 200, 40);
 		CategoriesCombo.setSelectedIndex(0);
@@ -132,7 +137,8 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 					String PhraseCategoryId = partsOfrandom[1];
 					String PhraseHelp = partsOfrandom[2];
 					String PhraseName = partsOfrandom[3];
-					char[] WordForMainGui = PhraseName.toCharArray();
+					// char[] WordForMainGui = PhraseName.toCharArray();
+					new HangmanMainFrame(PhraseName);
 
 					// System.out.println(contents);
 					System.out.println(PhraseId);
