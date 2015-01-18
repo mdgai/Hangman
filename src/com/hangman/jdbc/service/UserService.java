@@ -12,7 +12,7 @@ import com.hangman.jdbc.to.UserCriteria;
  * etc.
  * 
  * @author Maria - Despoina Gkaintatzi
- *
+ * 
  */
 public class UserService {
 
