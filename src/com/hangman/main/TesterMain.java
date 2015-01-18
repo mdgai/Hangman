@@ -1,6 +1,6 @@
 package com.hangman.main;
 
-//import com.hangman.guiMainFrame.HangmanMainFrame;
+import com.hangman.guiMainFrame.HangmanMainFrame;
 
 public class TesterMain {
 
@@ -8,6 +8,6 @@ public class TesterMain {
 
 		final String word = "Giraffe";
 
-		//new HangmanMainFrame(word);
+		new HangmanMainFrame(word);
 	}
 }
