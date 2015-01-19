@@ -135,8 +135,8 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 							.split("\\.");
 					String PhraseId = partsOfrandom[0];
 					String PhraseCategoryId = partsOfrandom[1];
-					String PhraseHelp = partsOfrandom[2];
-					String PhraseName = partsOfrandom[3];
+					String PhraseName = partsOfrandom[2];
+					String PhraseHelp = partsOfrandom[3];
 					// char[] WordForMainGui = PhraseName.toCharArray();
 					new HangmanMainFrame(PhraseName);
 
