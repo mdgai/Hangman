@@ -1,17 +1,12 @@
 package com.hangman.jdbc.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-//import com.google.common.collect.Lists;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-
-import com.google.common.collect.Lists;
 import com.hangman.jdbc.dao.BaseDAO;
 import com.hangman.jdbc.dao.CategoryDAO;
 import com.hangman.jdbc.to.Category;
 import com.hangman.jdbc.to.CategoryCriteria;
+//import com.google.common.collect.Lists;
 
 /**
  * Class that provides services to table Category, such as INSERT, DELETE,
