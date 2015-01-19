@@ -18,6 +18,8 @@ public class KeyBoardPanel extends JPanel {
 
 	/**
 	 * Creates the panel.
+	 * 
+	 * @author Tryfou Margarita
 	 */
 	public KeyBoardPanel(PhrasePanel aPhrasePanel) {
 

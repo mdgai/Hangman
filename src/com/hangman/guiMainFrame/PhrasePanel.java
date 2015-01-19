@@ -12,6 +12,8 @@ public class PhrasePanel extends JPanel {
 
 	/**
 	 * Creates the panel.
+	 * 
+	 * @author Tryfou Margarita
 	 */
 	public PhrasePanel(String aPhrase) {
 

@@ -9,6 +9,8 @@ public class MenuFrame extends JPanel {
 
 	/**
 	 * Creates the panel for the Menu.
+	 * 
+	 * @author Tryfou Margarita
 	 */
 	public MenuFrame() {
 
