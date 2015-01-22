@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class HangmanMainFrame {
 
-	private JFrame frmHangman;
+	static JFrame frmHangman;
 	private String phrases;
 	private JPanel panelMain;
 
@@ -27,7 +27,7 @@ public class HangmanMainFrame {
 
 	/**
 	 * Initialize the contents of the frame.
-	 *
+	 * 
 	 * @author Margarita Tryfou
 	 */
 	private void initialize(String word) {
@@ -70,6 +70,7 @@ public class HangmanMainFrame {
 
 		// Creates the Menubar
 		MenuFrame menubar = new MenuFrame();
+		MenuItemsHandler newHandler = new MenuItemsHandler();
 		menubar.setBounds(0, 0, 89, 23);
 		panelMain.add(menubar);
 

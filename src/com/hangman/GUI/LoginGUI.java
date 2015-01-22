@@ -21,6 +21,7 @@ public class LoginGUI {
 
 	private String username, password;
 	private JFrame frame;
+	private JFrame frmHandman;
 
 	/**
 	 * Create the application GUI
@@ -37,8 +38,7 @@ public class LoginGUI {
 	 */
 	private void initialize() {
 
-		// creates a new JFrame
-		final JFrame frmHandman = new JFrame();
+		frmHandman = new JFrame();
 		frmHandman.setVisible(true);
 		frmHandman.setTitle("HangMan");
 		frmHandman.setBounds(100, 100, 450, 350);
@@ -131,7 +131,7 @@ public class LoginGUI {
 							// Open next GUI
 							frame = new CategoriesGUI(
 									"Please Select a Category");
-							frame.setVisible(true);
+							// frame.setVisible(true);
 						}
 						frmHandman.dispose();
 					} else {
