@@ -8,6 +8,13 @@ import com.hangman.jdbc.service.CategoryService;
 import com.hangman.jdbc.to.Category;
 import com.hangman.jdbc.to.CategoryCriteria;
 
+/**
+ * CategoryTableModel extends AbstractTableModel, sets the model for the
+ * creation of the JTable.
+ * 
+ * @author Maria - Despoina Gkaintatzi
+ *
+ */
 public class CategoryTableModel extends AbstractTableModel {
 
 	private CategoryService categoryService = new CategoryService();
