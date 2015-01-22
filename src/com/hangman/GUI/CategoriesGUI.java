@@ -138,14 +138,17 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 					String PhraseName = partsOfrandom[2];
 					String PhraseHelp = partsOfrandom[3];
 					// char[] WordForMainGui = PhraseName.toCharArray();
-					new HangmanMainFrame(PhraseName);
+					new HangmanMainFrame(PhraseName, PhraseHelp);
+					frmHangmanCategory.setVisible(false);
 
-					// System.out.println(contents);
-					System.out.println(PhraseId);
-					System.out.println(PhraseCategoryId);
-					System.out.println(PhraseHelp);
-					System.out.println(PhraseName);
-					System.out.println(randomSelectionrow);
+					/*
+					 * // System.out.println(contents);
+					 * System.out.println(PhraseId);
+					 * System.out.println(PhraseCategoryId);
+					 * System.out.println(PhraseHelp);
+					 * System.out.println(PhraseName);
+					 * System.out.println(randomSelectionrow);
+					 */
 
 				} catch (Exception ex) {
 					DialogHelper.showException(frmHangmanCategory, ex,
