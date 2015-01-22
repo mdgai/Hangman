@@ -14,17 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
- * JDialog Rules Dialog Creation for the HangmanMainFrame Menu
+ * JDialog AboutHangmanDialog Creation for the HangmanMainFrame Menu
  * 
  * @author Tzanidou Alexandra
  * 
  */
-public class RulesDialog extends JDialog {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class AboutHangmanDialog extends JDialog {
 	private JDialog contentPane;
 
 	private final JPanel contentPanel = new JPanel();
@@ -32,7 +27,7 @@ public class RulesDialog extends JDialog {
 	/**
 	 * Create the Dialog.
 	 */
-	public RulesDialog() {
+	public AboutHangmanDialog() {
 
 		initialize();
 	}
@@ -45,7 +40,7 @@ public class RulesDialog extends JDialog {
 		setTitle("Help");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setBounds(100, 100, 526, 207);
+		setBounds(100, 100, 493, 300);
 		setBackground(new Color(102, 204, 0));
 		setForeground(new Color(102, 204, 0));
 		getContentPane().setLayout(new BorderLayout());
@@ -62,7 +57,7 @@ public class RulesDialog extends JDialog {
 			dtrpnTheRulesOf.setForeground(new Color(0, 102, 102));
 			dtrpnTheRulesOf.setBackground(new Color(102, 204, 0));
 			dtrpnTheRulesOf
-					.setText("The rules of the game Hangman are really simple. Your role is to guess the english word, according to the selected category. Every right letter will be displayed in the searhcing word. If you failed, one piece of Hangman will be displayed. Continue with guessing letters till you find whole word or till your Hangman is complete. We wish you good luck! ");
+					.setText("The origins of Hangman are obscure, but it seems to have arisen in Victorian times, says Tony Augarde, author of <<The Oxford Guide to Word Games>> (Oxford University Press). The game is mentioned in Alice Bertha Gomme's <<Traditional Games>> in 1894 under the name <<Birds, Beasts and Fishes.>> In the English language, the twelve most commonly occurring letters are, in descending order: e-t-a-o-i-n-s-h-r-d-l-u. This and other letter-frequency lists are used by the guessing player to increase the odds when it is their turn to guess. ");
 			contentPanel.add(dtrpnTheRulesOf, BorderLayout.CENTER);
 		}
 		{

@@ -47,7 +47,9 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 		} else if (command.equals("Rules")) {
 			RulesDialog dialog = new RulesDialog();
 
-		}
+		} else if (command.equals("About Hangman...")) {
+			AboutHangmanDialog dialog = new AboutHangmanDialog();
 
+		}
 	}
 }
