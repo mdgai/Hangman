@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.hangman.GUI.admin.Admin;
 import com.hangman.jdbc.service.UserService;
 
 public class LoginGUI {
@@ -125,8 +126,7 @@ public class LoginGUI {
 							password)) {
 						if (new UserService().isAdmin(username, password)) {
 							// Open AdminGUI
-							frame = new AdminGUI();
-							frame.setVisible(true);
+							frame = new Admin();
 						} else {
 							// Open next GUI
 							frame = new CategoriesGUI(

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hangman.GUI.DialogHelper;
 import com.hangman.jdbc.db.ConnectionFactory;
 import com.hangman.jdbc.db.DbUtil;
 import com.hangman.jdbc.to.Phrases;
@@ -108,7 +109,7 @@ public class PhrasesDAO implements BaseDAO<Phrases> {
 
 		try {
 			String queryString = "UPDATE Phrases SET "
-					+ "PhraseName = ?, PhraseCategoryID = ? PhraseHelp = ? "
+					+ "PhraseName = ?, PhraseCategoryID = ?, PhraseHelp = ? "
 					+ "WHERE PhraseID =?";
 
 			// Establish a connection and a statement to the db
@@ -211,12 +212,11 @@ public class PhrasesDAO implements BaseDAO<Phrases> {
 	 */
 	public void rowAffect(int rows) {
 		if (rows == 0) {
-			System.out
-					.println("There is no record to satisfy the given specifications. "
-							+ "Your request has not been completed");
+			DialogHelper.showInfo(null, "Your request has not been completed",
+					null);
 		} else if (rows == 1) {
-			System.out.println("One record has been modified. "
-					+ "Your request has been successfully completed");
+			DialogHelper.showInfo(null,
+					"Your request has been successfully completed", null);
 		} else {
 			System.out.println(rows + " records have been modified. "
 					+ "Your request has been successfully completed");

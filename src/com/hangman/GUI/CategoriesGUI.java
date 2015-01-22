@@ -27,7 +27,7 @@ import com.hangman.jdbc.to.PhrasesCriteria;
  * @author Alexandra Tzanidou
  */
 
-public class CategoriesGUI extends JFrame implements ActionListener {
+public class CategoriesGUI extends JFrame /* implements ActionListener */{
 
 	/**
 	 * 
@@ -84,7 +84,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		CategoriesCombo.setVisible(true);
 		CategoriesCombo.setBounds(140, 155, 200, 40);
 		CategoriesCombo.setSelectedIndex(0);
-		CategoriesCombo.addActionListener(this);
+		//CategoriesCombo.addActionListener(this);
 		CategoriesCombo.setBackground(getForeground());
 		panel.add(CategoriesCombo);
 
