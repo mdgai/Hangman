@@ -2,10 +2,13 @@ package com.hangman.jdbc.service;
 
 import java.util.List;
 
+import javax.swing.JComboBox;
+
 import com.hangman.jdbc.dao.BaseDAO;
 import com.hangman.jdbc.dao.CategoryDAO;
 import com.hangman.jdbc.to.Category;
 import com.hangman.jdbc.to.CategoryCriteria;
+
 //import com.google.common.collect.Lists;
 
 /**
@@ -63,5 +66,39 @@ public class CategoryService {
 		CategoryCriteria Category = new CategoryCriteria();
 		Category.setCategoryID(SelectionsId);
 		return SelectionsId;
+	}
+
+	/**
+	 * Finds the apropriate Category after row selection
+	 * 
+	 * @param row
+	 * @return the name of the Category
+	 * @author Maria - Despoina Gkaintatzi
+	 */
+	public String findCategoryName(int row, int categoryId) {
+		CategoryCriteria categoryCriteria = new CategoryCriteria();
+
+		categoryCriteria.setCategoryID(categoryId);
+		List<com.hangman.jdbc.to.Category> categoryList = findAll(categoryCriteria);
+
+		return categoryList.get(0).getCategoryName();
+	}
+
+	/**
+	 * Finds the apropriate Category id after selection in combo box.
+	 * 
+	 * @param row
+	 * @return the id of the category
+	 * @author Maria - Despoina Gkaintatzi
+	 */
+	public int findCategoryId(JComboBox<String> combo) {
+
+		CategoryCriteria categoryCriteria = new CategoryCriteria();
+
+		categoryCriteria
+				.setCategoryName(String.valueOf(combo.getSelectedItem()));
+		List<com.hangman.jdbc.to.Category> categoryList = findAll(categoryCriteria);
+
+		return categoryList.get(0).getCategoryID();
 	}
 }
