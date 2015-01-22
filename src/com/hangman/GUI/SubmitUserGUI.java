@@ -60,6 +60,11 @@ public class SubmitUserGUI extends JDialog {
 		createEvents();
 	}
 
+	/**
+	 * Creates all components for the JDialog.
+	 * 
+	 * @author Maria - Despoina Gkaintatzi
+	 */
 	private void initialize() {
 		setModal(true);
 		setTitle("Create Account");
@@ -126,7 +131,7 @@ public class SubmitUserGUI extends JDialog {
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		{
-			saveButton = new JButton("Save");
+			saveButton = new JButton("Register");
 			saveButton.setIcon(new ImageIcon(SubmitUserGUI.class
 					.getResource("/com/hangman/data/add.png")));
 
@@ -185,9 +190,8 @@ public class SubmitUserGUI extends JDialog {
 	// Private method that includes all events of the window.
 	private void createEvents() {
 
-		// *********************************************************
 		// event for save button.
-		// *********************************************************
+
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (validateForm()) {
@@ -206,18 +210,16 @@ public class SubmitUserGUI extends JDialog {
 			}
 		});
 
-		// *********************************************************
 		// event for cancel button.
-		// *********************************************************
+
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
 
-		// *********************************************************
 		// event for losing focus of text field Username.
-		// *********************************************************
+
 		txtUsername.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -225,9 +227,8 @@ public class SubmitUserGUI extends JDialog {
 			}
 		});
 
-		// *********************************************************
 		// event for losing focus of text field PasswordMatch.
-		// *********************************************************
+
 		fldPasswordMatch.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -249,9 +250,8 @@ public class SubmitUserGUI extends JDialog {
 			}
 		});
 
-		// *********************************************************
 		// event for losing focus of text field FirstName.
-		// *********************************************************
+
 		txtFirstname.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -259,9 +259,8 @@ public class SubmitUserGUI extends JDialog {
 			}
 		});
 
-		// *********************************************************
 		// event for losing focus of text field LastName.
-		// *********************************************************
+
 		txtLastname.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
