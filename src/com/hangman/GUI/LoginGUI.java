@@ -39,7 +39,7 @@ public class LoginGUI {
 
 		// creates a new JFrame
 		final JFrame frmHandman = new JFrame();
-		frmHandman.setVisible(true);
+		frmHandman.setResizable(false);
 		frmHandman.setTitle("HangMan");
 		frmHandman.setBounds(100, 100, 450, 350);
 		frmHandman.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,6 +148,8 @@ public class LoginGUI {
 		});
 		btnEnter.setBounds(163, 242, 89, 23);
 		panel.add(btnEnter);
+
+		frmHandman.setVisible(true);
 
 	}
 }
