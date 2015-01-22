@@ -1,5 +1,6 @@
 package com.hangman.guiMainFrame;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -14,20 +15,33 @@ import javax.swing.JPanel;
 public class KeyBoardPanel extends JPanel {
 
 	private PhrasePanel phrasePanel;
+	private LivesScorePanel livesScorePanel;
+	private HangmanCanvas hangmanCanvas;
 	private final ArrayList<JLabel> labelslist;
+	private GridBagLayout gbl_panelKeyboard;
 
 	/**
-	 * Creates the panel.
+	 * Creates the keyboard panel. Manipulates all event handlers
 	 * 
+	 * @param aPhrasePanel
+	 * @param aLivesScorePanel
 	 * @author Tryfou Margarita
 	 */
-	public KeyBoardPanel(PhrasePanel aPhrasePanel) {
+	public KeyBoardPanel(PhrasePanel aPhrasePanel,
+			LivesScorePanel aLivesScorePanel, HangmanCanvas aCanvas) {
 
+		// connection to PhrasePanel
 		phrasePanel = aPhrasePanel;
 		labelslist = phrasePanel.getLabelList();
 
+		// connection to LivesScorePanel
+		livesScorePanel = aLivesScorePanel;
+
+		// connection to HangmanCnavas
+		hangmanCanvas = aCanvas;
+
 		// Creation of panel that contains the button
-		GridBagLayout gbl_panelKeyboard = new GridBagLayout();
+		gbl_panelKeyboard = new GridBagLayout();
 		gbl_panelKeyboard.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_panelKeyboard.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gbl_panelKeyboard.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
@@ -39,12 +53,23 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnA = new JButton("A");
 		btnA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int counter = 0; // this is a counter that counts how many times
+									// a letter isn't found.
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnA.getText())) {
 						labellist.setVisible(true);
 						btnA.setEnabled(false);
+						gameOver();
 					} else
-						btnA.setEnabled(false);
+						counter++;
+				}
+				// if counter has the size of the labelslist, that means the
+				// labelslist don't contain the letter
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnA.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -57,12 +82,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnB = new JButton("B");
 		btnB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnB.getText())) {
 						labellist.setVisible(true);
 						btnB.setEnabled(false);
+						gameOver();
 					} else
-						btnB.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnB.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -75,12 +108,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnC = new JButton("C");
 		btnC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnC.getText())) {
 						labellist.setVisible(true);
 						btnC.setEnabled(false);
+						gameOver();
 					} else
-						btnC.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnC.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -93,12 +134,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnD = new JButton("D");
 		btnD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnD.getText())) {
 						labellist.setVisible(true);
 						btnD.setEnabled(false);
+						gameOver();
 					} else
-						btnD.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnD.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -111,12 +160,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnE = new JButton("E");
 		btnE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnE.getText())) {
 						labellist.setVisible(true);
 						btnE.setEnabled(false);
+						gameOver();
 					} else
-						btnE.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnE.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -129,12 +186,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnF = new JButton("F");
 		btnF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnF.getText())) {
 						labellist.setVisible(true);
 						btnF.setEnabled(false);
+						gameOver();
 					} else
-						btnF.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnF.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -148,12 +213,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnG = new JButton("G");
 		btnG.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnG.getText())) {
 						labellist.setVisible(true);
 						btnG.setEnabled(false);
+						gameOver();
 					} else
-						btnG.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnG.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -166,12 +239,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnH = new JButton("H");
 		btnH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnH.getText())) {
 						labellist.setVisible(true);
 						btnH.setEnabled(false);
+						gameOver();
 					} else
-						btnH.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnH.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -184,12 +265,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnI = new JButton("I");
 		btnI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnI.getText())) {
 						labellist.setVisible(true);
 						btnI.setEnabled(false);
+						gameOver();
 					} else
-						btnI.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnI.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -202,12 +291,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnJ = new JButton("J");
 		btnJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnJ.getText())) {
 						labellist.setVisible(true);
 						btnJ.setEnabled(false);
+						gameOver();
 					} else
-						btnJ.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnJ.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -220,12 +317,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnK = new JButton("K");
 		btnK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnK.getText())) {
 						labellist.setVisible(true);
 						btnK.setEnabled(false);
+						gameOver();
 					} else
-						btnK.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnK.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -238,12 +343,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnL = new JButton("L");
 		btnL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnL.getText())) {
 						labellist.setVisible(true);
 						btnL.setEnabled(false);
+						gameOver();
 					} else
-						btnL.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnL.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -256,12 +369,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnM = new JButton("M");
 		btnM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnM.getText())) {
 						labellist.setVisible(true);
 						btnM.setEnabled(false);
+						gameOver();
 					} else
-						btnM.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnM.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -274,12 +395,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnN = new JButton("N");
 		btnN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnN.getText())) {
 						labellist.setVisible(true);
 						btnN.setEnabled(false);
+						gameOver();
 					} else
-						btnN.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnN.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -292,12 +421,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnO = new JButton("O");
 		btnO.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnO.getText())) {
 						labellist.setVisible(true);
 						btnO.setEnabled(false);
+						gameOver();
 					} else
-						btnO.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnO.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -310,12 +447,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnP = new JButton("P");
 		btnP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnP.getText())) {
 						labellist.setVisible(true);
 						btnP.setEnabled(false);
+						gameOver();
 					} else
-						btnP.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnP.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -328,12 +473,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnQ = new JButton("Q");
 		btnQ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnQ.getText())) {
 						labellist.setVisible(true);
 						btnQ.setEnabled(false);
+						gameOver();
 					} else
-						btnQ.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnQ.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -346,12 +499,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnR = new JButton("R");
 		btnR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnR.getText())) {
 						labellist.setVisible(true);
 						btnR.setEnabled(false);
+						gameOver();
 					} else
-						btnR.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnR.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -364,12 +525,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnS = new JButton("S");
 		btnS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnS.getText())) {
 						labellist.setVisible(true);
 						btnS.setEnabled(false);
+						gameOver();
 					} else
-						btnS.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnS.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -382,12 +551,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnT = new JButton("T");
 		btnT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnT.getText())) {
 						labellist.setVisible(true);
 						btnT.setEnabled(false);
+						gameOver();
 					} else
-						btnT.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnT.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -400,12 +577,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnU = new JButton("U");
 		btnU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnU.getText())) {
 						labellist.setVisible(true);
 						btnU.setEnabled(false);
+						gameOver();
 					} else
-						btnU.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnU.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -418,12 +603,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnV = new JButton("V");
 		btnV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnV.getText())) {
 						labellist.setVisible(true);
 						btnV.setEnabled(false);
+						gameOver();
 					} else
-						btnV.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnV.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -436,12 +629,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnW = new JButton("W");
 		btnW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnW.getText())) {
 						labellist.setVisible(true);
 						btnW.setEnabled(false);
+						gameOver();
 					} else
-						btnW.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnW.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -454,12 +655,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnX = new JButton("X");
 		btnX.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnX.getText())) {
 						labellist.setVisible(true);
 						btnX.setEnabled(false);
+						gameOver();
 					} else
-						btnX.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnX.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -472,12 +681,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnY = new JButton("Y");
 		btnY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnY.getText())) {
 						labellist.setVisible(true);
 						btnY.setEnabled(false);
+						gameOver();
 					} else
-						btnY.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnY.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -490,12 +707,20 @@ public class KeyBoardPanel extends JPanel {
 		final JButton btnZ = new JButton("Z");
 		btnZ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int counter = 0;
 				for (JLabel labellist : labelslist) {
 					if (labellist.getText().equalsIgnoreCase(btnZ.getText())) {
 						labellist.setVisible(true);
 						btnZ.setEnabled(false);
+						gameOver();
 					} else
-						btnZ.setEnabled(false);
+						counter++;
+				}
+				if (counter == labelslist.size()) {
+					livesScorePanel.setLives();
+					btnZ.setEnabled(false);
+					hangmanCanvas.paint(getGraphics());
+					gameOver();
 				}
 			}
 		});
@@ -505,4 +730,39 @@ public class KeyBoardPanel extends JPanel {
 		gbc_btnZ.gridy = 3;
 		this.add(btnZ, gbc_btnZ);
 	}
+
+	/**
+	 * When the game ends, checks winners/loosers, pops-up the appropriate
+	 * message
+	 * 
+	 * @author Tryfou Margarita
+	 */
+	public void gameOver() {
+		int counter = 0;
+		if (livesScorePanel.getLives() == 0) {
+			Component[] comp = this.getComponents();
+			for (int i = 0; i < 26; i++) {
+				comp[i].setEnabled(false);
+			}
+			LooserFrame looser = new LooserFrame();
+			looser.setVisible(true);
+		}
+		if (livesScorePanel.getLives() > 0) {
+			for (JLabel label : labelslist) {
+				if (label.isVisible()) {
+					counter++;
+					if (counter == labelslist.size()) {
+						livesScorePanel.setScore();
+						Component[] comp = this.getComponents();
+						for (int i = 0; i < 26; i++) {
+							comp[i].setEnabled(false);
+						}
+						WinnerFrame winner = new WinnerFrame();
+						winner.setVisible(true);
+					}
+				}
+			}
+		}
+	}
+
 }
