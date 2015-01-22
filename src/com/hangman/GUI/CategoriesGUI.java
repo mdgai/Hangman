@@ -99,22 +99,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 				CategoryCriteria fselection = new CategoryCriteria();
 				PhrasesCriteria inportphrases = new PhrasesCriteria();
 				try {
-					/**
-					 * Reads the selected category, and split the string in two
-					 * different.
-					 */
-					Object contents = CategoriesCombo.getSelectedItem()
-							.toString();
-
-					String[] parts = ((String) contents).replaceAll("\\[", "")
-							.replaceAll("\\]", "").split(" ");
-					String id = parts[0];
-					int idtoint = Integer.parseInt(id);
-					String Name = parts[1];
-					String selectionDone = new CategoryService()
-							.CategorySelection(Name);
-					Integer SelcategoryID = new CategoryService()
-							.CategoryId(idtoint);
+					int idtoint = getCategorySelection(CategoriesCombo);
 
 					PhrasesService phrasesService = new PhrasesService();
 					List<Phrases> list = phrasesService.thisPhrases(idtoint);
@@ -137,24 +122,40 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 					String PhraseCategoryId = partsOfrandom[1];
 					String PhraseName = partsOfrandom[2];
 					String PhraseHelp = partsOfrandom[3];
-					// char[] WordForMainGui = PhraseName.toCharArray();
+
 					new HangmanMainFrame(PhraseName, PhraseHelp);
 					frmHangmanCategory.setVisible(false);
-
-					/*
-					 * // System.out.println(contents);
-					 * System.out.println(PhraseId);
-					 * System.out.println(PhraseCategoryId);
-					 * System.out.println(PhraseHelp);
-					 * System.out.println(PhraseName);
-					 * System.out.println(randomSelectionrow);
-					 */
 
 				} catch (Exception ex) {
 					DialogHelper.showException(frmHangmanCategory, ex,
 							"Something went wrong, Please try again!");
 				}
 
+			}
+
+			/**
+			 * @param CategoriesCombo
+			 * @return
+			 * @author Maria - Despoina Gkaintatzi
+			 */
+			private int getCategorySelection(final JComboBox CategoriesCombo) {
+				/**
+				 * Reads the selected category, and split the string in two
+				 * different.
+				 */
+				Object contents = CategoriesCombo.getSelectedItem()
+						.toString();
+
+				String[] parts = ((String) contents).replaceAll("\\[", "")
+						.replaceAll("\\]", "").split(" ");
+				String id = parts[0];
+				int idtoint = Integer.parseInt(id);
+				String Name = parts[1];
+				String selectionDone = new CategoryService()
+						.CategorySelection(Name);
+				Integer SelcategoryID = new CategoryService()
+						.CategoryId(idtoint);
+				return idtoint;
 			}
 
 			/**
