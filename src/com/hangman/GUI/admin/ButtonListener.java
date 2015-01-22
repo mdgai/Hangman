@@ -34,6 +34,7 @@ public class ButtonListener implements ActionListener {
 	private JTable table;
 	private JPanel panel;
 
+	// Constructor for Category
 	public ButtonListener(JButton btnUpdate, JButton btnDelete,
 			JButton btnInsert, JButton btnCancel, JTextField txtId,
 			JTextField txtCategory, JTable table, JPanel panel) {
@@ -48,6 +49,7 @@ public class ButtonListener implements ActionListener {
 		this.panel = panel;
 	}
 
+	// Constructor for Phrase
 	public ButtonListener(JButton btnUpdate, JButton btnDelete,
 			JButton btnInsert, JButton btnCancel, JTextField txtId,
 			JComboBox<String> categoryIdCombo, JTextField txtName,
@@ -73,13 +75,19 @@ public class ButtonListener implements ActionListener {
 		}
 	}
 
+	/**
+	 * Handles events for Category buttons
+	 * 
+	 * @param e
+	 * @author Maria - Despoina Gkaintatzi
+	 */
 	private void categoryButtonEvents(ActionEvent e) {
 		CategoryService categoryService = new CategoryService();
 
 		if (e.getSource() == btnInsert) {
 
+			// Insertion
 			com.hangman.jdbc.to.Category insertCategory = new com.hangman.jdbc.to.Category();
-			// insertCategory.setCategoryId(Integer.parseInt(txtId.getText()));
 			insertCategory.setCategoryName(txtCategory.getText());
 
 			categoryService.add(insertCategory);
@@ -87,6 +95,7 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnDelete) {
 
+			// Deletion
 			int row = table.getSelectedRow();
 
 			com.hangman.jdbc.to.Category deleteCategory = new com.hangman.jdbc.to.Category();
@@ -100,6 +109,7 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnUpdate) {
 
+			// Update
 			com.hangman.jdbc.to.Category updateCategory = new com.hangman.jdbc.to.Category();
 			updateCategory.setCategoryId(Integer.parseInt(txtId.getText()));
 			updateCategory.setCategoryName(txtCategory.getText());
@@ -108,21 +118,31 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnCancel) {
 
+			// Cancellation
 			panel.setVisible(false);
 		}
 
+		// Empty fields
 		txtId.setText("");
 		txtCategory.setText("");
 
+		// Refresh table
 		table.setModel(new CategoryTableModel());
 	}
 
+	/**
+	 * Handles events for Phrase buttons
+	 * 
+	 * @param e
+	 * @author Maria - Despoina Gkaintatzi
+	 */
 	private void phraseButtonEvents(ActionEvent e) {
 
 		PhrasesService phrasesService = new PhrasesService();
 
 		if (e.getSource() == btnInsert) {
 
+			// Insertion
 			Phrases insertPhrase = new Phrases();
 
 			insertPhrase.setPhraseCategoryID(new CategoryService()
@@ -135,6 +155,7 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnDelete) {
 
+			// Deletion
 			int row = table.getSelectedRow();
 
 			Phrases deletePhrase = new Phrases();
@@ -153,6 +174,7 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnUpdate) {
 
+			// Update
 			Phrases updatePhrase = new Phrases();
 			updatePhrase.setPhraseID(Integer.parseInt(txtId.getText()));
 			updatePhrase.setPhraseCategoryID(new CategoryService()
@@ -164,14 +186,17 @@ public class ButtonListener implements ActionListener {
 		}
 		if (e.getSource() == btnCancel) {
 
+			// Cancellation
 			panel.setVisible(false);
 		}
 
+		// Empty fields
 		txtId.setText("");
 		categoryIdCombo.setSelectedIndex(0);
 		txtName.setText("");
 		txtHelp.setText("");
 
+		// Refresh table
 		table.setModel(new PhraseTableModel());
 	}
 

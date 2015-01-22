@@ -9,6 +9,13 @@ import com.hangman.jdbc.service.PhrasesService;
 import com.hangman.jdbc.to.Phrases;
 import com.hangman.jdbc.to.PhrasesCriteria;
 
+/**
+ * PhraseTableModel extends AbstractTableModel, sets the model for the creation
+ * of the JTable.
+ * 
+ * @author Maria - Despoina Gkaintatzi
+ *
+ */
 public class PhraseTableModel extends AbstractTableModel {
 
 	private PhrasesService phrasesService = new PhrasesService();
@@ -53,12 +60,6 @@ public class PhraseTableModel extends AbstractTableModel {
 							.getPhraseID());
 				else if (col == 1) {
 
-					/*
-					 * categoryCriteria.setCategoryID(phrases.get(row)
-					 * .getPhraseCategoryID()); category =
-					 * categoryService.findAll(categoryCriteria); String
-					 * categoryName = category.get(0).getCategoryName();
-					 */
 					data[row][col] = new CategoryService().findCategoryName(
 							row, phrases.get(row).getPhraseCategoryID());
 				} else if (col == 2)
