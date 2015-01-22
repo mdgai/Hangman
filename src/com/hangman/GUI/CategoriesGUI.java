@@ -29,6 +29,9 @@ import com.hangman.jdbc.to.PhrasesCriteria;
 
 public class CategoriesGUI extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private static Object SelectedCategory;
 	public static JButton btnDone;
@@ -93,14 +96,59 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				new CategoryCriteria();
-				new PhrasesCriteria();
+				CategoryCriteria fselection = new CategoryCriteria();
+				PhrasesCriteria inportphrases = new PhrasesCriteria();
 				try {
+					/**
+					 * Reads the selected category, and split the string in two
+					 * different.
+					 */
+					Object contents = CategoriesCombo.getSelectedItem()
+							.toString();
 
-					String PhraseName = selectionDone(CategoriesCombo);
+					String[] parts = ((String) contents).replaceAll("\\[", "")
+							.replaceAll("\\]", "").split(" ");
+					String id = parts[0];
+					int idtoint = Integer.parseInt(id);
+					String Name = parts[1];
+					String selectionDone = new CategoryService()
+							.CategorySelection(Name);
+					Integer SelcategoryID = new CategoryService()
+							.CategoryId(idtoint);
+
+					PhrasesService phrasesService = new PhrasesService();
+					List<Phrases> list = phrasesService.thisPhrases(idtoint);
+
+					Random random = new Random(); // Create random class object
+					/*
+					 * Generate a random number (index) with the size of the
+					 * list being the maximum
+					 */
+					int randomSelection = random.nextInt(list.size());
+					/*
+					 * Object with the random selection
+					 */
+					Object randomSelectionrow = list.get(randomSelection)
+							.toString();
+					String[] partsOfrandom = ((String) randomSelectionrow)
+							.replaceAll("\\[", "").replaceAll("\\]", "")
+							.split("\\.");
+					String PhraseId = partsOfrandom[0];
+					String PhraseCategoryId = partsOfrandom[1];
+					String PhraseName = partsOfrandom[2];
+					String PhraseHelp = partsOfrandom[3];
 					// char[] WordForMainGui = PhraseName.toCharArray();
-					frmHangmanCategory.dispose();
-					new HangmanMainFrame(PhraseName);
+					new HangmanMainFrame(PhraseName, PhraseHelp);
+					frmHangmanCategory.setVisible(false);
+
+					/*
+					 * // System.out.println(contents);
+					 * System.out.println(PhraseId);
+					 * System.out.println(PhraseCategoryId);
+					 * System.out.println(PhraseHelp);
+					 * System.out.println(PhraseName);
+					 * System.out.println(randomSelectionrow);
+					 */
 
 				} catch (Exception ex) {
 					DialogHelper.showException(frmHangmanCategory, ex,

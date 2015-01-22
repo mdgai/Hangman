@@ -31,10 +31,9 @@ public class PhrasePanel extends JPanel {
 	 */
 	public void addLabel() {
 
-		int phrase_length = phrase.length();
 		int bound_x = 0, bound_y = 0;
 
-		for (int i = 0; i < phrase_length; i++) {
+		for (int i = 0; i < phrase.length(); i++) {
 			JLabel lblPhrase_i = new JLabel();
 			lblPhrase_i.setFont(new Font("Calibri", Font.BOLD, 26));
 			lblPhrase_i.setBounds(bound_x, 0, 28, 36);
@@ -73,4 +72,5 @@ public class PhrasePanel extends JPanel {
 	public String getPhrase() {
 		return phrase;
 	}
+
 }

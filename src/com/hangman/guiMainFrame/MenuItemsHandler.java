@@ -20,7 +20,6 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String PhraseName;
 	Component hag;
 
 	@Override
@@ -31,7 +30,13 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 			com.hangman.GUI.CategoriesGUI.btnDone.doClick();
 
 		} else if (command.equals("Change player")) {
-			new LoginGUI();
+			com.hangman.guiMainFrame.HangmanMainFrame.frmHangman.dispose();
+			try {
+				new LoginGUI();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 		} else if (command.equals("Change category")) {
 			com.hangman.guiMainFrame.HangmanMainFrame.frmHangman.dispose();
@@ -45,10 +50,10 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 		} else if (command.equals("Exit")) {
 			com.hangman.guiMainFrame.HangmanMainFrame.frmHangman.dispose();
 		} else if (command.equals("Rules")) {
-			RulesDialog dialog = new RulesDialog();
+			new RulesDialog();
 
 		} else if (command.equals("About Hangman...")) {
-			AboutHangmanDialog dialog = new AboutHangmanDialog();
+			new AboutHangmanDialog();
 
 		}
 	}

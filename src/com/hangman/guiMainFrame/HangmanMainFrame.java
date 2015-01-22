@@ -1,8 +1,6 @@
 package com.hangman.guiMainFrame;
 
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,16 +11,20 @@ public class HangmanMainFrame {
 
 	static JFrame frmHangman;
 	private String phrases;
+
 	private JPanel panelMain;
+	private String phraseHelp;
 
 	/**
-	 * Creates the application.
+	 * Constructor
 	 * 
 	 * @author Margarita Tryfou
 	 */
-	public HangmanMainFrame(String word) {
+	public HangmanMainFrame(String phrases, String phraseHelp) {
 
-		initialize(word);
+		this.phraseHelp = phraseHelp;
+		this.phrases = phrases;
+		initialize();
 	}
 
 	/**
@@ -30,43 +32,36 @@ public class HangmanMainFrame {
 	 * 
 	 * @author Margarita Tryfou
 	 */
-	private void initialize(String word) {
-
-		phrases = word;
+	private void initialize() {
 
 		// Creates the JFrame
 		frmHangman = new JFrame();
 		frmHangman.setResizable(false);
 		frmHangman.setTitle("HangMan");
 		frmHangman.getContentPane().setBackground(new Color(102, 204, 51));
-		frmHangman.setBounds(100, 100, 1000, 500);
+		frmHangman.setBounds(100, 100, 1000, 600);
 		frmHangman.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHangman.getContentPane().setLayout(null);
 
 		// Creates the main Panel
 		panelMain = new JPanel();
 		panelMain.setBackground(new Color(102, 204, 0));
-		panelMain.setBounds(0, 0, 990, 466);
+		panelMain.setBounds(0, 0, 992, 566);
 		frmHangman.getContentPane().add(panelMain);
 		panelMain.setLayout(null);
 
 		// Labels that contains the hanger images
 		JLabel lblhangBase = new JLabel("");
-		lblhangBase.setBounds(49, 102, 41, 269);
+		lblhangBase.setBounds(48, 208, 41, 269);
 		lblhangBase.setIcon(new ImageIcon(HangmanMainFrame.class
 				.getResource("/com/hangman/data/hangBase.JPG")));
 		panelMain.add(lblhangBase);
 
 		JLabel lblhangTop = new JLabel("");
-		lblhangTop.setBounds(49, 88, 201, 23);
+		lblhangTop.setBounds(48, 194, 201, 23);
 		lblhangTop.setIcon(new ImageIcon(HangmanMainFrame.class
 				.getResource("/com/hangman/data/hangTop.JPG")));
 		panelMain.add(lblhangTop);
-
-		// Canvas for drawing the hangman
-		Canvas canvas = new Canvas();
-		canvas.setBounds(150, 117, 156, 254);
-		panelMain.add(canvas);
 
 		// Creates the Menubar
 		MenuFrame menubar = new MenuFrame();
@@ -77,35 +72,33 @@ public class HangmanMainFrame {
 		// Creates the panel for phrases
 		PhrasePanel phrasePanel = new PhrasePanel(phrases);
 		phrasePanel.setBackground(new Color(102, 204, 0));
-		phrasePanel.setBounds(475, 130, 505, 110);
+		phrasePanel.setBounds(500, 245, 480, 110);
 		panelMain.add(phrasePanel);
 
+		// Creates the Score and Lives labels
+		LivesScorePanel livesScore = new LivesScorePanel();
+		livesScore.setSize(386, 80);
+		livesScore.setLocation(48, 53);
+		livesScore.setBackground(new Color(102, 204, 0));
+		panelMain.add(livesScore);
+
+		// Canvas for drawing the hangman
+		HangmanCanvas canvas = new HangmanCanvas(livesScore);
+		canvas.setBounds(141, 223, 160, 250);
+		panelMain.add(canvas);
+
+		// Creates the help field
+		HelpPhrasePanel helpPhrase = new HelpPhrasePanel(phraseHelp);
+		helpPhrase.setBackground(new Color(102, 204, 0));
+		helpPhrase.setBounds(500, 53, 467, 118);
+		panelMain.add(helpPhrase);
+
 		// creates the keyboard
-		KeyBoardPanel keyBoard = new KeyBoardPanel(phrasePanel);
+		KeyBoardPanel keyBoard = new KeyBoardPanel(phrasePanel, livesScore,
+				canvas);
 		keyBoard.setBackground(new Color(102, 204, 0));
-		keyBoard.setBounds(500, 290, 340, 118);
+		keyBoard.setBounds(500, 400, 340, 118);
 		panelMain.add(keyBoard);
-
-		// Score and Lives labels
-		JLabel lblLives = new JLabel("Lives:");
-		lblLives.setBounds(500, 28, 68, 33);
-		lblLives.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		panelMain.add(lblLives);
-
-		JLabel lblTrackLives = new JLabel("6");
-		lblTrackLives.setBounds(578, 28, 30, 33);
-		lblTrackLives.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		panelMain.add(lblTrackLives);
-
-		JLabel lblScore = new JLabel("Score:");
-		lblScore.setBounds(703, 28, 77, 33);
-		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		panelMain.add(lblScore);
-
-		JLabel label_1 = new JLabel("0");
-		label_1.setBounds(783, 28, 105, 33);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		panelMain.add(label_1);
 
 		frmHangman.setVisible(true);
 
