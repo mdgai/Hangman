@@ -28,7 +28,14 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 
 		String command = e.getActionCommand();
 		if (command.equals("New Game")) {
-			com.hangman.GUI.CategoriesGUI.btnDone.doClick();
+
+			com.hangman.guiMainFrame.HangmanMainFrame.frmHangman.dispose();
+			try {
+				com.hangman.GUI.CategoriesGUI.btnDone.doClick();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 		} else if (command.equals("Change player")) {
 			com.hangman.guiMainFrame.HangmanMainFrame.frmHangman.dispose();
