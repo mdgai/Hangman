@@ -33,7 +33,8 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Object SelectedCategory;
+	private static Object SelectedCategory;
+	public static JButton btnDone;
 
 	/**
 	 * Create the frame_Category_Selection_Frame
@@ -70,7 +71,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		// creates label
 		JLabel ImageLabel = new JLabel();
 		ImageLabel.setLabelFor(ImageLabel);
-		ImageLabel.setBounds(0, 0, 442, 164);
+		ImageLabel.setBounds(0, 0, 442, 150);
 		ImageLabel.setIcon(new ImageIcon(LoginGUI.class
 				.getResource("/com/hangman/data/hangman2.JPG")));
 		panel.add(ImageLabel);
@@ -88,8 +89,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 		CategoriesCombo.setBackground(getForeground());
 		panel.add(CategoriesCombo);
 
-		// Creates the selection button
-		JButton btnDone = new JButton("Done!");
+		btnDone = new JButton("Done!");
 		btnDone.setBounds(180, 230, 89, 23);
 		btnDone.setToolTipText("Please Select a Category from the list, and then Click me!");
 		panel.add(btnDone);
@@ -99,22 +99,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 				CategoryCriteria fselection = new CategoryCriteria();
 				PhrasesCriteria inportphrases = new PhrasesCriteria();
 				try {
-					/**
-					 * Reads the selected category, and split the string in two
-					 * different.
-					 */
-					Object contents = CategoriesCombo.getSelectedItem()
-							.toString();
-
-					String[] parts = ((String) contents).replaceAll("\\[", "")
-							.replaceAll("\\]", "").split(" ");
-					String id = parts[0];
-					int idtoint = Integer.parseInt(id);
-					String Name = parts[1];
-					String selectionDone = new CategoryService()
-							.CategorySelection(Name);
-					Integer SelcategoryID = new CategoryService()
-							.CategoryId(idtoint);
+					int idtoint = getCategorySelection(CategoriesCombo);
 
 					PhrasesService phrasesService = new PhrasesService();
 					List<Phrases> list = phrasesService.thisPhrases(idtoint);
@@ -137,18 +122,9 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 					String PhraseCategoryId = partsOfrandom[1];
 					String PhraseName = partsOfrandom[2];
 					String PhraseHelp = partsOfrandom[3];
-					// char[] WordForMainGui = PhraseName.toCharArray();
 					new HangmanMainFrame(PhraseName, PhraseHelp);
 					frmHangmanCategory.setVisible(false);
-
-					/*
-					 * // System.out.println(contents);
-					 * System.out.println(PhraseId);
-					 * System.out.println(PhraseCategoryId);
-					 * System.out.println(PhraseHelp);
-					 * System.out.println(PhraseName);
-					 * System.out.println(randomSelectionrow);
-					 */
+	
 
 				} catch (Exception ex) {
 					DialogHelper.showException(frmHangmanCategory, ex,
@@ -156,6 +132,85 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 				}
 
 			}
+
+			/**
+			 * @param CategoriesCombo
+			 * @return
+			 * @author Maria - Despoina Gkaintatzi
+			 */
+			private int getCategorySelection(final JComboBox CategoriesCombo) {
+				/**
+				 * Reads the selected category, and split the string in two
+				 * different.
+				 */
+				Object contents = CategoriesCombo.getSelectedItem()
+						.toString();
+
+				String[] parts = ((String) contents).replaceAll("\\[", "")
+						.replaceAll("\\]", "").split(" ");
+				String id = parts[0];
+				int idtoint = Integer.parseInt(id);
+				String Name = parts[1];
+				String selectionDone = new CategoryService()
+						.CategorySelection(Name);
+				Integer SelcategoryID = new CategoryService()
+						.CategoryId(idtoint);
+				return idtoint;
+			}
+
+			/**
+			 * @param CategoriesCombo
+			 * @return
+			 * @author Tzanidou Alexandra
+			 */
+			private String selectionDone(final JComboBox CategoriesCombo) {
+				Object contents = CategoriesCombo.getSelectedItem().toString();
+				/**
+				 * Reads the selected category, and split the string in two
+				 * different.
+				 */
+				String[] parts = ((String) contents).replaceAll("\\[", "")
+						.replaceAll("\\]", "").split(" ");
+				String id = parts[0];
+				int idtoint = Integer.parseInt(id);
+				String Name = parts[1];
+				new CategoryService().CategorySelection(Name);
+				new CategoryService().CategoryId(idtoint);
+
+				return randomPhraseSelection(idtoint);
+			}
+
+			/**
+			 * @param idtoint
+			 * @return a random phrase from the selected category
+			 * @author Tzanidou Alexandra
+			 */
+			public String randomPhraseSelection(int idtoint) {
+				PhrasesService phrasesService = new PhrasesService();
+				List<Phrases> list = phrasesService.thisPhrases(idtoint);
+				for (Phrases currentPhrases : list)
+					;
+				Random random = new Random(); // Create random class object
+				/*
+				 * Generate a random number (index) with the size of the list
+				 * being the maximum
+				 */
+				int randomSelection = random.nextInt(list.size());
+				/*
+				 * Object with the random selection
+				 */
+				Object randomSelectionrow = list.get(randomSelection)
+						.toString();
+				String[] partsOfrandom = ((String) randomSelectionrow)
+						.replaceAll("\\[", "").replaceAll("\\]", "")
+						.split("\\.");
+				String PhraseName = partsOfrandom[2];
+				String PhraseHelp = partsOfrandom[3];
+				System.out.println(PhraseName);
+				System.out.println(PhraseHelp);
+				return PhraseName;
+			}
+
 		});
 	}
 
@@ -164,7 +219,7 @@ public class CategoriesGUI extends JFrame implements ActionListener {
 	 * @return The Category that user selects from the CategoriesCombo.
 	 * @author Alexandra Tzanidou
 	 */
-	public Object getCategory() {
+	public static Object getCategory() {
 		return SelectedCategory;
 	}
 

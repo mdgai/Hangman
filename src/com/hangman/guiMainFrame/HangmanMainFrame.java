@@ -9,9 +9,10 @@ import javax.swing.JPanel;
 
 public class HangmanMainFrame {
 
-	private JFrame frmHangman;
-	private String phrases, phraseHelp;
+	static JFrame frmHangman;
+	private String phrases;
 	private JPanel panelMain;
+	private String phraseHelp;
 
 	/**
 	 * Constructor
@@ -63,6 +64,7 @@ public class HangmanMainFrame {
 
 		// Creates the Menubar
 		MenuFrame menubar = new MenuFrame();
+		MenuItemsHandler newHandler = new MenuItemsHandler();
 		menubar.setBounds(0, 0, 89, 23);
 		panelMain.add(menubar);
 
