@@ -1,9 +1,12 @@
 package com.hangman.GUI.admin;
 
+import java.awt.FlowLayout;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -27,6 +30,7 @@ public class Admin extends JFrame {
 	private JMenuItem mntmPhrase;
 	private JMenuItem mntmPlayGame;
 	private JMenuItem mntmAbout;
+	private JLabel lblLabel;
 
 	/**
 	 * Create the frame.
@@ -82,6 +86,13 @@ public class Admin extends JFrame {
 		mntmAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
 				InputEvent.CTRL_MASK));
 		mnHelp.add(mntmAbout);
+		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		// Set icon
+		lblLabel = new JLabel("");
+		lblLabel.setIcon(new ImageIcon(Admin.class
+				.getResource("/com/hangman/data/tool.png")));
+		getContentPane().add(lblLabel);
 
 		// Set frame visible
 		setVisible(true);
