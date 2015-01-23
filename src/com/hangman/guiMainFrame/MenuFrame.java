@@ -43,9 +43,6 @@ public class MenuFrame extends JPanel {
 		mnMenu.add(mnChangeCategory);
 		mnChangeCategory.addActionListener(handler);
 
-		JMenuItem mnHighScores = new JMenuItem("High Scores");
-		mnMenu.add(mnHighScores);
-
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnMenu.add(mntmExit);
 		mntmExit.addActionListener(handler);
