@@ -18,7 +18,7 @@ import com.hangman.guiMainFrame.HangmanMainFrame;
  * This class holds info for the Hangman project
  * 
  * @author Maria - Despoina Gkaintatzi
- *
+ * 
  */
 public class About extends JFrame {
 
@@ -71,7 +71,7 @@ public class About extends JFrame {
 					regular);
 			doc.insertString(
 					doc.getLength(),
-					"Maria - Despoina Gkaintatzi\nMargarita Tryfoy\nAleksandra Tzanidou\n\n",
+					"Maria - Despoina Gkaintatzi\nMargarita Tryfoy\nAlexandra Tzanidou\n\n",
 					bold);
 			doc.insertString(
 					doc.getLength(),

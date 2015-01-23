@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import com.hangman.GUI.CategoriesGUI;
 import com.hangman.GUI.LoginGUI;
+import com.hangman.GUI.admin.About;
 
 /**
  * MenuIemsHandler is a class for handling menu's events on HangmanMainFrame
@@ -53,7 +54,7 @@ public class MenuItemsHandler extends MenuItem implements ActionListener {
 			new RulesDialog();
 
 		} else if (command.equals("About Hangman...")) {
-			new AboutHangmanDialog();
+			new About();
 
 		}
 	}
