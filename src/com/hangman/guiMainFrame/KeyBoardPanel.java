@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.hangman.GUI.DialogHelper;
+
 public class KeyBoardPanel extends JPanel {
 
 	private PhrasePanel phrasePanel;
@@ -744,8 +746,8 @@ public class KeyBoardPanel extends JPanel {
 			for (int i = 0; i < 26; i++) {
 				comp[i].setEnabled(false);
 			}
-			LooserFrame looser = new LooserFrame();
-			looser.setVisible(true);
+			String message = "YOU LOST!" + "\nTRY AGAIN";
+			DialogHelper.showInfo(this, message, "Hangman");
 		}
 		if (livesScorePanel.getLives() > 0) {
 			for (JLabel label : labelslist) {
@@ -757,8 +759,8 @@ public class KeyBoardPanel extends JPanel {
 						for (int i = 0; i < 26; i++) {
 							comp[i].setEnabled(false);
 						}
-						WinnerFrame winner = new WinnerFrame();
-						winner.setVisible(true);
+						String message = "YOU WIN!!!";
+						DialogHelper.showInfo(this, message, "Hangman");
 					}
 				}
 			}

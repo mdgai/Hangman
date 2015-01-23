@@ -131,7 +131,6 @@ public class LoginGUI {
 							// Open next GUI
 							frame = new CategoriesGUI(
 									"Please Select a Category");
-							frame.setVisible(true);
 						}
 						frmHandman.dispose();
 					} else {
