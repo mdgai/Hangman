@@ -40,6 +40,7 @@ public class LoginGUI {
 
 		// creates a new JFrame
 		final JFrame frmHandman = new JFrame();
+		frmHandman.getContentPane().setBackground(new Color(102, 204, 0));
 		frmHandman.setResizable(false);
 		frmHandman.setTitle("HangMan");
 		frmHandman.setBounds(100, 100, 450, 350);
